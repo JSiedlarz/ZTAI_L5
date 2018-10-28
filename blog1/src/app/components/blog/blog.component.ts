@@ -7,6 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
+
+items = [
+{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},{
+image: "aaaa",
+text: "jjj"
+},]
+
   constructor() { }
 
   ngOnInit() {
