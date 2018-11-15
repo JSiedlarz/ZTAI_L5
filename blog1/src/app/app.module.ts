@@ -12,6 +12,12 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
 import { BlogItemTextComponent } from './components/blog-item-text/blog-item-text.component';
 import { BlogItemTextPipe } from './blog-item-text.pipe';
 import { BlogItemImageComponent } from './components/blog-item-image/blog-item-image.component';
+//import { BlogItemDetailComponent } from './blog-item-detail/blog-item-detail.component';
+import {HttpClientModule} from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
+
+
 const appRoutes: Routes = [
   {
 	path: 'home-component',
@@ -43,14 +49,19 @@ const appRoutes: Routes = [
     BlogItemComponent,
     BlogItemTextComponent,
     BlogItemTextPipe,
-    BlogItemImageComponent
+    BlogItemImageComponent,
+   // BlogItemDetailComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }
