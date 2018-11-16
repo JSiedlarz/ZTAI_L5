@@ -12,10 +12,14 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
 import { BlogItemTextComponent } from './components/blog-item-text/blog-item-text.component';
 import { BlogItemTextPipe } from './blog-item-text.pipe';
 import { BlogItemImageComponent } from './components/blog-item-image/blog-item-image.component';
-//import { BlogItemDetailComponent } from './blog-item-detail/blog-item-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { BlogHomeComponent } from './components/blog-home/blog-home.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {DataServiceService} from './services/data-service.service';
+
+
 
 
 const appRoutes: Routes = [
@@ -50,16 +54,19 @@ const appRoutes: Routes = [
     BlogItemTextComponent,
     BlogItemTextPipe,
     BlogItemImageComponent,
-   // BlogItemDetailComponent,
-    FilterPipe
+    FilterPipe,
+    BlogHomeComponent,
+    SearchBarComponent,
+
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 
 })

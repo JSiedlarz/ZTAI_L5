@@ -1,8 +1,22 @@
-<div *ngFor="let item in item | filter:filterText">
+<!--<div *ngFor="let item of items | filter:filterText">-->
+  <!--<app-blog-item [image]="item.url" [text]="item.title"></app-blog-item>-->
+<!--</div>-->
+<!--&lt;!&ndash;<nav class="navbar navbar-light bg-light justify-content-between">&ndash;&gt;-->
+<!--&lt;!&ndash;<a class="navbar-brand">Navbar</a>&ndash;&gt;-->
+<!--<form class="form-inline">-->
+  <!--<input name="text" id="queryParam" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="filterText" >-->
+  <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit"  routerLink = "blog" queryParams="{title:queryParam}">Szukaj</button>-->
+<!--</form>-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
 
-  <app-blog-item [image]="item.image" [text]="item.text"></app-blog-item>
+<div *ngFor="let post of blogPosts$ | filter: filterText">
+  <p>
+    <app-graphics
+      [image]="post.item.url">
+    </app-graphics>
+    <app-blog-item-text
+      [text]="post.title"
+      [id]="post.id">
+    </app-blog-item-text>
+  </p>
 </div>
-<form class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="filterText">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" roterLink ="blog" queryParams ="{title:queryParm}">Wyszukaj</button>
-</form>
