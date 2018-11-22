@@ -1,22 +1,34 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-// {map} from 'rxjs/operators/map';
+import {map} from "rxjs/operators";
+import {BehaviorSubject} from "rxjs";
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
-
   private url = 'https://jsonplaceholder.typicode.com';
-  constructor(private http : HttpClient) {
+  private textSource = new BehaviorSubject('sdssdssd');
+  private imageSource = new BehaviorSubject('asaasa');
+
+  currentText = this.textSource.asObservable();
+  currentImage = this.imageSource.asObservable();
+
+  constructor(private http : HttpClient){}
+
+  getAll(){
+    return this.http.get(this.url + '/photos').pipe(map((x:any[])=>x.slice(0,20)));
   }
 
-  getAll() {
-    return this.http.get(this.url + '/photos')
-    //   .pipe(
-    //     map((x:any[]) => x.slice(0,20))
-    // );
-  }
   get(id){
-    return this.http.get(this.url + '/photos/' + id);
+    return this.http.get(this.url + '/photos?id=' + id).pipe();
+  }
+
+  changeText(text: string){
+    this.textSource.next(text);
+  }
+
+  changeImage(image: string) {
+    this.imageSource.next(image);
   }
 }

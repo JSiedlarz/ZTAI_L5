@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { QuizComponent } from './components/quiz/quiz.component';
@@ -10,7 +9,6 @@ import { Routes,RouterModule} from '@angular/router';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogItemComponent } from './components/blog-item/blog-item.component';
 import { BlogItemTextComponent } from './components/blog-item-text/blog-item-text.component';
-import { BlogItemTextPipe } from './blog-item-text.pipe';
 import { BlogItemImageComponent } from './components/blog-item-image/blog-item-image.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
@@ -18,8 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { BlogHomeComponent } from './components/blog-home/blog-home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {DataServiceService} from './services/data-service.service';
-
-
+import {BlogItemDetailComponent} from "./components/blog-item-detail/blog-item-detail.component";
+import { ReactiveFormsModule } from '@angular/forms';
+import { TextFormatDirective } from './directives/text-format.directive'
+import {AppRoutingModule} from "./app-routing.module";
 
 
 const appRoutes: Routes = [
@@ -38,8 +38,11 @@ const appRoutes: Routes = [
 {
 	path: 'contact',
 	component: ContactComponent,
-}
-
+},
+  {
+    path: 'blog/deatil/:id',
+    component: BlogItemDetailComponent
+  }
 ];
 
 @NgModule({
@@ -52,18 +55,21 @@ const appRoutes: Routes = [
     BlogComponent,
     BlogItemComponent,
     BlogItemTextComponent,
-    BlogItemTextPipe,
     BlogItemImageComponent,
+    BlogItemDetailComponent,
     FilterPipe,
     BlogHomeComponent,
     SearchBarComponent,
+    TextFormatDirective,
 
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [DataServiceService],
